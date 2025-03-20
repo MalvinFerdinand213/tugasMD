@@ -63,11 +63,11 @@ input_data = pd.DataFrame([{
     "FAVC": favc, "FCVC": fcvc, "NCP": ncp, "CAEC": caec
 }])
 
-st.subheader("Data input by user")
+st.write("Data input by user")
 st.dataframe(input_data)
 
 # **Prediksi Model**
-st.subheader("Obesity Prediction")
+st.write("Obesity Prediction")
 probabilities, predicted_class = dummy_predict(input_data)
 
 # Menampilkan probabilitas setiap kelas
