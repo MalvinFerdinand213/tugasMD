@@ -8,6 +8,6 @@ data = pd.read_csv("ObesityDataSet_raw_and_data_sinthetic.csv")
 df = pd.DataFrame(data)
 
 # Expander to show raw data
-with st.expander("Data"):
+with st.expander("###Data"):
     st.write("This is a raw data")
     st.dataframe(df)
