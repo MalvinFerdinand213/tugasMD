@@ -47,15 +47,7 @@ favc = st.selectbox("Frequent Consumption of High Caloric Food", ["yes", "no"])
 fcvc = st.slider("Frequency of Vegetable Consumption", 1, 3, 2)
 ncp = st.slider("Number of Main Meals", 1, 4, 3)
 caec = st.selectbox("Consumption of Food Between Meals", ["Sometimes", "Frequently", "Always", "No"])
-"""
-smoke = st.selectbox("Do you smoke?", ["yes", "no"])
-ch2o = st.slider("Daily Water Intake (liters)", 1, 4, 2)
-scc = st.selectbox("Do you have high cholesterol?", ["yes", "no"])
-faf = st.slider("Physical Activity Frequency (days/week)", 0, 7, 3)
-tue = st.slider("Time Using Technology per Day (hours)", 0, 5, 1)
-calc = st.selectbox("Alcohol Consumption", ["No", "Sometimes", "Frequently"])
-mtrans = st.selectbox("Mode of Transport", ["Public_Transport", "Walking", "Automobile", "Motorbike"])
-"""
+
 # **Menampilkan Data yang Diinputkan**
 input_data = pd.DataFrame([{
     "Gender": gender, "Age": age, "Height": height, "Weight": weight,
