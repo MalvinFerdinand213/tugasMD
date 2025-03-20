@@ -74,4 +74,4 @@ probabilities, predicted_class = dummy_predict(input_data)
 st.dataframe(probabilities)
 
 # Menampilkan hasil prediksi akhir
-st.write("The predicted output is:,  {predicted_class}")
+st.write("The predicted output is: ", predicted_class)
