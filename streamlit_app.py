@@ -15,5 +15,5 @@ with st.expander("Data"):
 
 #Data Visualilzation
 with st.expander("Data Visualization"):
-    st.write("Data Visualization")
+    st.subtitle("Data Visualization")
 
