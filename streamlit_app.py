@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+st.title('Machine Learning App')
 st.info('This app will predict your obesite level!')
 
 def main():
