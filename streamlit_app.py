@@ -35,7 +35,7 @@ fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
 st.plotly_chart(fig)
 
 with st.expander("Data Visualization"):
-    st.info(dif)
+    st.info("dif")
 
 
 def train_model():
