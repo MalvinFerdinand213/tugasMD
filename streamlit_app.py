@@ -84,9 +84,6 @@ st.dataframe(input_data)
 # Mendapatkan probabilitas prediksi untuk setiap kelas
 probabilities = model.predict_proba(input_data)
 
-# Menampilkan probabilitas tiap kelas dalam dataframe
-model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
-model.fit(X, y)
 # Mendapatkan probabilitas prediksi untuk setiap kelas
 probabilities = model.predict_proba(input_data)
 
