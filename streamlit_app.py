@@ -55,7 +55,7 @@ class ObesityModel:
             return pickle.load(file)
 
 # Load dataset
-df = pd.read_csv("dataset.csv")  # Ganti dengan path dataset kamu
+df = pd.read_csv("ObesityDataSet_raw_and_data_sinthetic.csv")  # Ganti dengan path dataset kamu
 X = df.drop(columns=["NObeyesdad"])  # Fitur
 y = df["NObeyesdad"]  # Label
 
