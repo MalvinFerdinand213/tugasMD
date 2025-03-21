@@ -81,8 +81,12 @@ st.write("Data input by user")
 st.dataframe(input_data)
 
 # **Prediksi Model**
-st.write("Obesity Prediction")
-probabilities, predicted_class = train_model(input_data)
-predicted_class = model.predict(input_data)[0]
+# Mendapatkan probabilitas prediksi untuk setiap kelas
+probabilities = model.predict_proba(input_data)
+
+# Menampilkan probabilitas tiap kelas dalam dataframe
+st.write("Prediction Probabilities:")
+st.dataframe(pd.DataFrame(probabilities, columns=["Insufficient Weight", "Normal Weight", "Overweight Level I", "Overweight Level II", "Obesity Type I", "Obesity Type II"]))
 st.write("The predicted output is: ", predicted_class)
+
 
