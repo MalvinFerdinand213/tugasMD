@@ -32,7 +32,6 @@ with st.expander("Data Visualization"):
                  color_discrete_map=category_mapping,
                  title="Data Visualization",
                  labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
-    fig.update_layout(xaxis=dict(range=[df["Height"].min() * 0.95, df["Height"].max() * 1.05]))
 
     st.plotly_chart(fig)
 
