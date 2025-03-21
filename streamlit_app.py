@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
+
 
 st.title("Machine Learning App")
 st.info("This app will predict your obesity level!")
@@ -19,19 +22,38 @@ with st.expander("Data Visualization"):
     st.write("Data Visualization")
 
 
-def dummy_predict(data):
-    # Simulasi output probabilitas untuk setiap kelas obesitas
-    prob = np.random.dirichlet(np.ones(6), size=1)[0]  # Probabilitas acak dengan total 1
-    categories = ["Insufficient Weight", "Normal Weight", "Overweight Level I",
-                  "Overweight Level II", "Obesity Type I", "Obesity Type II"]
+def train_model():
+    # Dummy data training (harus diganti dengan dataset asli)
+    data = pd.DataFrame({
+        "Gender": np.random.choice(["Male", "Female"], 100),
+        "Age": np.random.randint(10, 80, 100),
+        "Height": np.random.uniform(1.2, 2.2, 100),
+        "Weight": np.random.randint(30, 200, 100),
+        "family_history_with_overweight": np.random.choice(["yes", "no"], 100),
+        "FAVC": np.random.choice(["yes", "no"], 100),
+        "FCVC": np.random.randint(1, 4, 100),
+        "NCP": np.random.randint(1, 5, 100),
+        "CAEC": np.random.choice(["Sometimes", "Frequently", "Always", "No"], 100),
+        "Obesity": np.random.choice(["Insufficient Weight", "Normal Weight", "Overweight Level I", "Overweight Level II", "Obesity Type I", "Obesity Type II"], 100)
+    })
     
-    # Membuat DataFrame hasil prediksi probabilitas
-    prob_df = pd.DataFrame([prob], columns=categories)
+    # Label encoding
+    label_encoders = {}
+    for col in ["Gender", "family_history_with_overweight", "FAVC", "CAEC"]:
+        le = LabelEncoder()
+        data[col] = le.fit_transform(data[col])
+        label_encoders[col] = le
     
-    # Mendapatkan indeks dengan probabilitas tertinggi
-    predicted_class = np.argmax(prob)
+    X = data.drop("Obesity", axis=1)
+    y = LabelEncoder().fit_transform(data["Obesity"])
     
-    return prob_df, predicted_class
+    model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+    model.fit(X, y)
+    
+    return model, label_encoders
+
+# Load model
+model, encoders = train_model()
 
 # **Judul Aplikasi**
 st.title("Obesity Prediction App")
@@ -49,10 +71,12 @@ ncp = st.slider("Number of Main Meals", 1, 4, 1)
 caec = st.selectbox("Consumption of Food Between Meals", ["Sometimes", "Frequently", "Always", "No"])
 
 # **Menampilkan Data yang Diinputkan**
-input_data = pd.DataFrame([{
-    "Gender": gender, "Age": age, "Height": height, "Weight": weight,
-    "family_history_with_overweight": family_history,
-    "FAVC": favc, "FCVC": fcvc, "NCP": ncp, "CAEC": caec
+input_data = pd.DataFrame([{ 
+    "Gender": encoders["Gender"].transform([gender])[0], 
+    "Age": age, "Height": height, "Weight": weight,
+    "family_history_with_overweight": encoders["family_history_with_overweight"].transform([family_history])[0],
+    "FAVC": encoders["FAVC"].transform([favc])[0],
+    "FCVC": fcvc, "NCP": ncp, "CAEC": encoders["CAEC"].transform([caec])[0]
 }])
 
 st.write("Data input by user")
@@ -60,10 +84,7 @@ st.dataframe(input_data)
 
 # **Prediksi Model**
 st.write("Obesity Prediction")
-probabilities, predicted_class = dummy_predict(input_data)
+predicted_class = model.predict(input_data)[0]
+class_labels = ["Insufficient Weight", "Normal Weight", "Overweight Level I", "Overweight Level II", "Obesity Type I", "Obesity Type II"]
+st.write("The predicted output is: ", class_labels[predicted_class])
 
-# Menampilkan probabilitas setiap kelas
-st.dataframe(probabilities)
-
-# Menampilkan hasil prediksi akhir
-st.write("The predicted output is: ", predicted_class)
