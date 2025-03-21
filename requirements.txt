@@ -6,4 +6,4 @@ joblib
 plotly
 sklearn
 matplotlib
-pickle5
+pickle
