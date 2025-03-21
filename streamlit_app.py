@@ -17,6 +17,41 @@ with st.expander("Data"):
     st.dataframe(df)
 
 #Data Visualilzation
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# Load dataset
+file_path = "ObesityDataSet_raw_and_data_sinthetic.csv"
+df = pd.read_csv(file_path)
+
+# Mapping kategori obesitas ke warna
+category_mapping = {
+    "Insufficient_Weight": "blue",
+    "Normal_Weight": "green",
+    "Overweight_Level_I": "yellow",
+    "Overweight_Level_II": "orange",
+    "Obesity_Type_I": "red",
+    "Obesity_Type_II": "purple"
+}
+
+# Streamlit UI
+st.title("Machine Learning App")
+st.markdown("This app will predict your obesity level!")
+
+# Dropdown untuk eksplorasi data
+with st.expander("Data"):
+    st.dataframe(df.head())
+
+# Scatter plot
+fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
+                 color_discrete_map=category_mapping,
+                 title="Data Visualization",
+                 labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
+
+st.plotly_chart(fig)
+
+
 with st.expander("Data Visualization"):
     st.write("Data Visualization")
 
