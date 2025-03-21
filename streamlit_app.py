@@ -26,16 +26,16 @@ category_mapping = {
     "Obesity_Type_II": "purple"
 }
 # Scatter plot
-fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
-                 color_discrete_map=category_mapping,
-                 title="Data Visualization",
-                 labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
+fig = px.line(df.sort_values("Height"), x="Height", y="Weight", color="NObeyesdad",
+              color_discrete_map=category_mapping,
+              title="Data Visualization",
+              labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
 
 st.plotly_chart(fig)
 
+with st.expander("Data"):
+    st.dataframe(df.head())
 
-with st.expander("Data Visualization"):
-    st.write("Data Visualization")
 
 def train_model():
     # Dummy data training (harus diganti dengan dataset asli)
