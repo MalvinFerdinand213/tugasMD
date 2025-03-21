@@ -31,10 +31,10 @@ fig = px.line(df.sort_values("Height"), x="Height", y="Weight", color="NObeyesda
               title="Data Visualization",
               labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
 
-st.plotly_chart(fig)
+dif = st.plotly_chart(fig)
 
-with st.expander("Data"):
-    st.dataframe(df.head())
+with st.expander("Data Visualization"):
+    st.info(dif)
 
 
 def train_model():
