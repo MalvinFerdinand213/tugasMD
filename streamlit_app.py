@@ -39,13 +39,13 @@ st.title("Obesity Prediction App")
 # **Input Data Pengguna**
 st.header("Input Data")
 gender = st.selectbox("Gender", ["Male", "Female"])
-age = st.slider("Age", 10, 80, 25)
-height = st.slider("Height (m)", 1.2, 2.2, 1.7)
-weight = st.slider("Weight (kg)", 30, 200, 70)
+age = st.slider("Age", 10, 80, 0)
+height = st.slider("Height (m)", 1.2, 2.2, 0)
+weight = st.slider("Weight (kg)", 30, 200, 0)
 family_history = st.selectbox("Family History of Overweight", ["yes", "no"])
 favc = st.selectbox("Frequent Consumption of High Caloric Food", ["yes", "no"])
-fcvc = st.slider("Frequency of Vegetable Consumption", 1, 3, 2)
-ncp = st.slider("Number of Main Meals", 1, 4, 3)
+fcvc = st.slider("Frequency of Vegetable Consumption", 1, 3, 0)
+ncp = st.slider("Number of Main Meals", 1, 4, 0)
 caec = st.selectbox("Consumption of Food Between Meals", ["Sometimes", "Frequently", "Always", "No"])
 
 # **Menampilkan Data yang Diinputkan**
