@@ -85,6 +85,5 @@ st.dataframe(input_data)
 # **Prediksi Model**
 st.write("Obesity Prediction")
 predicted_class = model.predict(input_data)[0]
-class_labels = ["Insufficient Weight", "Normal Weight", "Overweight Level I", "Overweight Level II", "Obesity Type I", "Obesity Type II"]
-st.write("The predicted output is: ", class_labels[predicted_class])
+st.write("The predicted output is: ", predicted_class)
 
