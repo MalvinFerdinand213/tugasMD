@@ -5,7 +5,6 @@ import plotly.express as px
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 
-
 st.title("Machine Learning App")
 st.info("This app will predict your obesity level!")
 
@@ -20,7 +19,6 @@ with st.expander("Data"):
 #Data Visualilzation
 with st.expander("Data Visualization"):
     st.write("Data Visualization")
-
 
 def train_model():
     # Dummy data training (harus diganti dengan dataset asli)
@@ -84,6 +82,7 @@ st.dataframe(input_data)
 
 # **Prediksi Model**
 st.write("Obesity Prediction")
+probabilities, predicted_class = train_model(input_data)
 predicted_class = model.predict(input_data)[0]
 st.write("The predicted output is: ", predicted_class)
 
