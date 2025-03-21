@@ -25,15 +25,6 @@ category_mapping = {
     "Obesity_Type_I": "red",
     "Obesity_Type_II": "purple"
 }
-
-# Streamlit UI
-st.title("Machine Learning App")
-st.markdown("This app will predict your obesity level!")
-
-# Dropdown untuk eksplorasi data
-with st.expander("Data"):
-    st.dataframe(df.head())
-
 # Scatter plot
 fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
                  color_discrete_map=category_mapping,
