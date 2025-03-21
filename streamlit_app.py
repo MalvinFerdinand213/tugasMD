@@ -25,17 +25,15 @@ category_mapping = {
     "Obesity_Type_I": "red",
     "Obesity_Type_II": "purple"
 }
-# Scatter plot
-fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
+
+
+with st.expander("Data Visualization"):
+    fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
                  color_discrete_map=category_mapping,
                  title="Data Visualization",
                  labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
 
-# Tampilkan di Streamlit
-st.plotly_chart(fig)
-
-with st.expander("Data Visualization"):
-    st.info("dif")
+    st.plotly_chart(fig)
 
 
 def train_model():
