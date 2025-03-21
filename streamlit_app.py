@@ -17,15 +17,6 @@ with st.expander("Data"):
     st.dataframe(df)
 
 #Data Visualilzation
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-# Load dataset
-file_path = "ObesityDataSet_raw_and_data_sinthetic.csv"
-df = pd.read_csv(file_path)
-
-# Mapping kategori obesitas ke warna
 category_mapping = {
     "Insufficient_Weight": "blue",
     "Normal_Weight": "green",
