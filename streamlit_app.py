@@ -85,8 +85,18 @@ st.dataframe(input_data)
 probabilities = model.predict_proba(input_data)
 
 # Menampilkan probabilitas tiap kelas dalam dataframe
+model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+model.fit(X, y)
+# Mendapatkan probabilitas prediksi untuk setiap kelas
+probabilities = model.predict_proba(input_data)
+
+# Menampilkan probabilitas tiap kelas dalam dataframe
 st.write("Prediction Probabilities:")
 st.dataframe(pd.DataFrame(probabilities, columns=["Insufficient Weight", "Normal Weight", "Overweight Level I", "Overweight Level II", "Obesity Type I", "Obesity Type II"]))
+
+# Menampilkan hasil prediksi akhir
+predicted_class = np.argmax(probabilities)
 st.write("The predicted output is: ", predicted_class)
+
 
 
