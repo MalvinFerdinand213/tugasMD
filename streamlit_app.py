@@ -28,7 +28,7 @@ category_mapping = {
 
 
 with st.expander("Data Visualization"):
-    fig = px.scatter(df, x=1, y="Weight", color="NObeyesdad",
+    fig = px.scatter(df, x="Height", y="Weight", color="NObeyesdad",
                  color_discrete_map=category_mapping,
                  title="Data Visualization",
                  labels={"Height": "Height (m)", "Weight": "Weight (kg)"})
